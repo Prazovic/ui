@@ -24,14 +24,16 @@ import tuple from 'immutable-tuple';
 
 const SellButton = styled(Button)`
   margin: 20px 0px 0px 0px;
-  background: #f23b69;
+  background: #F72119;
   border-color: #f23b69;
+  border-radius:10px;
 `;
 
 const BuyButton = styled(Button)`
   margin: 20px 0px 0px 0px;
-  background: #02bf76;
+  background:  #21bd04;
   border-color: #02bf76;
+  border-radius:10px;
 `;
 
 const sliderMarks = {
@@ -291,7 +293,7 @@ export default function TradeForm({
             style={{
               width: '50%',
               textAlign: 'center',
-              background: side === 'buy' ? '#02bf76' : '',
+              background: side === 'buy' ? '#46de00' : '',
               borderColor: side === 'buy' ? '#02bf76' : '',
             }}
           >
@@ -302,7 +304,7 @@ export default function TradeForm({
             style={{
               width: '50%',
               textAlign: 'center',
-              background: side === 'sell' ? '#F23B69' : '',
+              background: side === 'sell' ? '#e01919' : '',
               borderColor: side === 'sell' ? '#F23B69' : '',
             }}
           >
@@ -351,7 +353,7 @@ export default function TradeForm({
           marks={sliderMarks}
           onChange={onSliderChange}
         />
-        <div style={{ paddingTop: 18 }}>
+        <div style={{ paddingTop: 18,color: '#e01919' }}>
           {'POST '}
           <Switch
             checked={postOnly}

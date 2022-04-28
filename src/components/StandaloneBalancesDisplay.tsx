@@ -35,9 +35,10 @@ const Tip = styled.p`
 `;
 
 const ActionButton = styled(Button)`
-  color: #2abdd2;
-  background-color: #212734;
+  color: #030b2f;
+  background-color: #69a5f9;
   border-width: 0px;
+  border-radius: 20px;
 `;
 
 export default function StandaloneBalancesDisplay() {
@@ -198,7 +199,7 @@ export default function StandaloneBalancesDisplay() {
                   title="Token mint"
                   trigger="hover"
                 >
-                  <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                  <InfoCircleOutlined style={{ color: '#f9f7fa' }} />
                 </Popover>
               )}
             </Divider>
@@ -230,7 +231,7 @@ export default function StandaloneBalancesDisplay() {
               <Col>{balances && balances.unsettled}</Col>
             </RowBox>
             <RowBox align="middle" justify="space-around">
-              <Col style={{ width: 150 }}>
+              <Col style={{ width: 120 }}>
                 <ActionButton
                   block
                   size="large"
@@ -239,7 +240,7 @@ export default function StandaloneBalancesDisplay() {
                   Deposit
                 </ActionButton>
               </Col>
-              <Col style={{ width: 150 }}>
+              <Col style={{ width: 120 }}>
                 <ActionButton block size="large" onClick={onSettleFunds}>
                   Settle
                 </ActionButton>

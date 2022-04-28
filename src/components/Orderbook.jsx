@@ -14,7 +14,7 @@ const Title = styled.div`
 
 const SizeTitle = styled(Row)`
   padding: 20px 0 14px;
-  color: #434a59;
+  color: #8da0c7;
 `;
 
 const MarkPriceTitle = styled(Row)`
@@ -186,8 +186,8 @@ const OrderbookRow = React.memo(
             data-width={sizePercent + '%'}
             data-bgcolor={
               side === 'buy'
-                ? 'rgba(65, 199, 122, 0.6)'
-                : 'rgba(242, 60, 105, 0.6)'
+                ? 'rgba(0,230,64,0.6)'
+                : 'rgba(242,38,19,0.6)'
             }
           />
           <Price onClick={onPriceClick}>{formattedPrice}</Price>
@@ -206,9 +206,9 @@ const MarkPriceComponent = React.memo(
 
     let markPriceColor =
       markPrice > previousMarkPrice
-        ? '#41C77A'
+        ? '#00d632'
         : markPrice < previousMarkPrice
-        ? '#F23B69'
+        ? '#e8411c'
         : 'white';
 
     let formattedMarkPrice =

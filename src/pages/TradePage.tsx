@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import Orderbook from '../components/Orderbook';
 import UserInfoTable from '../components/UserInfoTable';
 import StandaloneBalancesDisplay from '../components/StandaloneBalancesDisplay';
+
+import { AdvancedChart } from "react-tradingview-embed";
+
+//const App = () => <AdvancedChart widgetProps={{"theme": "dark"}} />;
+
 import {
   getMarketInfos,
   getTradePageUrl,
@@ -15,6 +20,8 @@ import {
 import TradeForm from '../components/TradeForm';
 import TradesTable from '../components/TradesTable';
 import LinkAddress from '../components/LinkAddress';
+import AppY from '../components/chartY';
+
 import DeprecatedMarketsInstructions from '../components/DeprecatedMarketsInstructions';
 import {
   DeleteOutlined,
@@ -26,12 +33,13 @@ import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
-import { TVChartContainer } from '../components/TradingView';
+//import { TVChartContainer } from '../components/TradingView';
 // Use following stub for quick setup without the TradingView private dependency
-// function TVChartContainer() {
-//   return <></>
-// }
+function TVChartContainer() {
+  return <></>
+}
 
+var mrx = '';
 const { Option, OptGroup } = Select;
 
 const Wrapper = styled.div`
@@ -42,6 +50,12 @@ const Wrapper = styled.div`
   .borderNone .ant-select-selector {
     border: none !important;
   }
+  box-shadow: 0 0 .05rem #fff,
+  0 0 .05rem #fff,
+  0 0 0.5rem #8300fa,
+  0 0 0.05rem #8300fa,
+  0 0 0.1rem #8300fa,
+  inset 0 0 .05rem #8300fa;
 `;
 
 export default function TradePage() {
@@ -84,8 +98,13 @@ function TradePageInner() {
   });
 
   useEffect(() => {
-    document.title = marketName ? `${marketName} — Serum` : 'Serum';
+    document.title = marketName ? `${marketName} — DEX Arena` : 'DEX Arena';
   }, [marketName]);
+
+  mrx = marketName ? `${marketName}` : '';
+  mrx = mrx.replace('/', '');
+  //mrx = mrx.replace('USDC','USDT');
+
 
   const changeOrderRef = useRef<
     ({ size, price }: { size?: number; price?: number }) => void
@@ -182,16 +201,21 @@ function TradePageInner() {
                 title="Market address"
                 trigger="click"
               >
-                <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                <InfoCircleOutlined style={{ color: '#f9f7fa' }} />
               </Popover>
             </Col>
           ) : null}
           <Col>
             <PlusCircleOutlined
-              style={{ color: '#2abdd2' }}
+              style={{ color: '#f9f7fa' }}
               onClick={() => setAddMarketVisible(true)}
             />
           </Col>
+
+          <Col>
+
+          </Col>
+
           {deprecatedMarkets && deprecatedMarkets.length > 0 && (
             <React.Fragment>
               <Col>
@@ -230,6 +254,7 @@ function MarketSelector({
 
   const extractBase = (a) => a.split('/')[0];
   const extractQuote = (a) => a.split('/')[1];
+
 
   const selectedMarket = getMarketInfos(customMarkets)
     .find(
@@ -290,15 +315,15 @@ function MarketSelector({
               ? -1
               : extractQuote(a.name) !== 'USDT' &&
                 extractQuote(b.name) === 'USDT'
-              ? 1
-              : 0,
+                ? 1
+                : 0,
           )
           .sort((a, b) =>
             extractBase(a.name) < extractBase(b.name)
               ? -1
               : extractBase(a.name) > extractBase(b.name)
-              ? 1
-              : 0,
+                ? 1
+                : 0,
           )
           .map(({ address, name, deprecated }, i) => (
             <Option
@@ -339,9 +364,10 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
       style={{
         minHeight: '900px',
         flexWrap: 'nowrap',
+        
       }}
     >
-      <Col flex="auto" style={{ height: '50vh' }}>
+      <Col flex="auto" style={{ height: '100vh' }}>
         <Row style={{ height: '100%' }}>
           <TVChartContainer />
         </Row>
@@ -367,8 +393,31 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
-      <Row style={{ height: '30vh' }}>
-        <TVChartContainer />
+      <Row style={{
+        height: '450px',
+        width: '96vw',
+        borderWidth: '0px',
+        overflow: 'hidden',
+        display: 'flex',
+        flex: 1, paddingTop: 20, paddingBottom: 20, paddingLeft: 5
+      }}>
+        <AdvancedChart widgetProps={{
+          "width": "96vw",
+          "height": 430,
+          "interval": "5",
+          "symbol": mrx,
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "withdateranges": true,
+          "hide_side_toolbar": false,
+          "allow_symbol_change": true,
+          "container_id": "tradingview_c9683"
+        }}
+        />
       </Row>
       <Row
         style={{
@@ -407,7 +456,23 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
       <Row style={{ height: '50vh' }}>
-        <TVChartContainer />
+        <AdvancedChart widgetProps={{
+          "width": "96vw",
+          "height": 430,
+          "interval": "5",
+          "symbol": mrx,
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "withdateranges": true,
+          "hide_side_toolbar": false,
+          "allow_symbol_change": true,
+          "container_id": "tradingview_c9683"
+        }}
+        />
       </Row>
       <Row>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>

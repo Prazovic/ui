@@ -59,11 +59,11 @@ export function useAllMarkets() {
             programId: marketInfo.programId,
           };
         } catch (e) {
-          notify({
-            message: 'Error loading all market',
-            description: e.message,
-            type: 'error',
-          });
+          //notify({
+            //message: 'Error loading all market. Check your connection',
+            //description: e.message,
+            //type: 'error',
+          //});
           return null;
         }
       }),
@@ -159,7 +159,7 @@ const _SLOW_REFRESH_INTERVAL = 5 * 1000;
 const _FAST_REFRESH_INTERVAL = 1000;
 
 export const DEFAULT_MARKET = USE_MARKETS.find(
-  ({ name, deprecated }) => name === 'SRM/USDT' && !deprecated,
+  ({ name, deprecated }) => name === 'SOL/USDT' && !deprecated,
 );
 
 export function getMarketDetails(
@@ -235,7 +235,7 @@ export function MarketProvider({ marketAddress, setMarketAddress, children }) {
     setMarket(null);
     if (!marketInfo || !marketInfo.address) {
       notify({
-        message: 'Error loading market',
+        message: 'Error loading market. Check your internet connection & refresh this page',
         description: 'Please select a market from the dropdown',
         type: 'error',
       });
@@ -245,7 +245,7 @@ export function MarketProvider({ marketAddress, setMarketAddress, children }) {
       .then(setMarket)
       .catch((e) =>
         notify({
-          message: 'Error loading market',
+          message: 'Error loading market. Check your internet connection & refresh this page',
           description: e.message,
           type: 'error',
         }),
@@ -900,7 +900,7 @@ export function useUnmigratedDeprecatedMarkets() {
       if (!marketInfo) {
         console.log('Failed loading market');
         notify({
-          message: 'Error loading market',
+          message: 'Error loading market. Check your internet connection & refresh this page',
           type: 'error',
         });
         return null;
@@ -917,7 +917,7 @@ export function useUnmigratedDeprecatedMarkets() {
       } catch (e) {
         console.log('Failed loading market', marketInfo.name, e);
         notify({
-          message: 'Error loading market',
+          message: 'Error loading market. Check your internet connection & refresh this page',
           description: e.message,
           type: 'error',
         });

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_c9683"></div>
+    <div class="tradingview-widget-copyright"><a href="https://tradingview.com" target="_blank">Chart by TradingView</a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      $.urlParameters = function (params) {
+        var results = new RegExp("[?&]" + params + "=([^&#]*)").exec(
+          window.location.href
+        );
+        return results ? decodeURI(results[1]) : null;
+      };
+
+
+      var symb = $.urlParameters("cryp");
+      new TradingView.widget(
+        {
+          "width": '100%',
+          "height": 530,
+          "interval": "5",
+          "symbol": "KUCOIN:" + symb,
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "withdateranges": true,
+          "hide_side_toolbar": false,
+          "allow_symbol_change": true,
+          "calendar": true,
+          "studies": [
+    "MASimple@tv-basicstudies"
+  ],
+          "container_id": "tradingview_c9683"
+        }
+      );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+
+  <script>
+</body >
+
+</html >

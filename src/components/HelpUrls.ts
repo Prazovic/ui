@@ -8,4 +8,9 @@ export const helpUrls = {
   projectSerum: 'https://projectserum.com/',
   developerResources: 'https://projectserum.com/developer-resources',
   solanaBeach: 'https://solanabeach.io',
+  baliarena: 'https://baliarena.com',
+  twitter: 'https://twitter.com/baliarena',
+  instagram: 'https://www.instagram.com/baliarena.metaverse/',
+  solana: 'https://solana.com/',
+  disclaimer: 'https://baliarena.com/dex-arena/disclaimer.html'
 };

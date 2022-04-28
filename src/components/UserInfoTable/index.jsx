@@ -20,7 +20,7 @@ export default function Index() {
         </Paragraph>
         <Paragraph style={{ color: 'rgba(255,255,255,0.5)' }}>
           To fund your wallet, <a href="https://www.sollet.io">sollet.io</a>.
-          You can get SOL from FTX, Binance, BitMax, and others. You can get
+          You can get SOL from FTX, Binance, BitMax, <a href="https://indodax.com/ref/Prazovic/1">Indodax</a>, <a href="https://www.tokocrypto.com/account/signup?ref=62MB1K4A">Tokocrypto</a>, and others. You can get
           other tokens from FTX.{' '}
         </Paragraph>
       </Typography>

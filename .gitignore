@@ -31,3 +31,5 @@ yarn-error.log*
 public/charting_library
 src/charting_library
 public/datafeeds
+
+eslint --ignore-path .gitignore src/charting_library/charting_library.esm.js
