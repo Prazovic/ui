@@ -56,7 +56,7 @@ const EXTERNAL_LINKS = {
   '/explorer': 'https://solscan.io',
   '/srm-faq': 'https://projectserum.com/srm-faq',
   '/swap': 'https://swap.projectserum.com',
-  '/docs': 'https://docs.baliarena.com',
+  '/docs': 'https://docs.baliarena.com/guides/dex-arena',
 
 };
 

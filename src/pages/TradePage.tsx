@@ -20,7 +20,7 @@ import {
 import TradeForm from '../components/TradeForm';
 import TradesTable from '../components/TradesTable';
 import LinkAddress from '../components/LinkAddress';
-import AppY from '../components/chartY';
+
 
 import DeprecatedMarketsInstructions from '../components/DeprecatedMarketsInstructions';
 import {
@@ -455,9 +455,9 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
-      <Row style={{ height: '50vh' }}>
+      <Row style={{ height: '450px',paddingTop:'5px'}}>
         <AdvancedChart widgetProps={{
-          "width": "96vw",
+          "width": "90vw",
           "height": 430,
           "interval": "5",
           "symbol": mrx,

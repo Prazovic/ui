@@ -12,5 +12,5 @@ export const helpUrls = {
   twitter: 'https://twitter.com/baliarena',
   instagram: 'https://www.instagram.com/baliarena.metaverse/',
   solana: 'https://solana.com/',
-  disclaimer: 'https://baliarena.com/dex-arena/disclaimer.html'
+  disclaimer: 'https://docs.baliarena.com/guides/dex-arena/disclaimer'
 };
